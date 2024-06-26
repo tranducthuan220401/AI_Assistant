@@ -114,16 +114,17 @@
 ## **Usage**
 
 #### Download file
-   - Due to LFS limitations, this project cannot currently be cloned from git, but you can download the project [here](https://drive.google.com/file/d/1Dge_4dlQVLHNX4TUFIqyBB4oZlAbCFUx/view?usp=sharing) and follow the steps below to run it.  
+   - First, to use it, you need to use the command "Git clone https://github.com/tranducthuan220401/AI_Assistant.git".  
+   - Then you need to download the models from this drive [here](https://programmablesearchengine.google.com/controlpanel/all).
 
 #### Get API
 
-   - First, you need to obtain an API key from Google to use the custom search feature. You can find the API key [here](https://programmablesearchengine.google.com/controlpanel/all) and the Custom Search Engine ID [here](https://programmablesearchengine.google.com/controlpanel/all) then save them into two corresponding files named API_Key.txt and S_id.txt.
+   - After that, you need to obtain an API key from Google to use the custom search feature. You can find the API key [here](https://programmablesearchengine.google.com/controlpanel/all) and the Custom Search Engine ID [here](https://programmablesearchengine.google.com/controlpanel/all) then save them into two corresponding files named API_Key.txt and S_id.txt.
 
 #### Extract file
 
-   - Next, you need to unzip the files MoviesRecommendation.zip and AgePrediction.zip to use the Movies Recommendation and Age Prediction features.
+   - After that, simply unzip the models.zip file at the root of the folder.  
 
 #### 4. Install the requirements.txt file.
 
-   - You can use the command 'pip install -r requirements.txt'.
+   - Finally, you need to install the necessary libraries using the command 'pip install -r requirements.txt'.
