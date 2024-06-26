@@ -11,7 +11,24 @@
 
 ## **App features**
 
-## 1. Voice control (Speech to text)
+## Chat bot
+
+   - The application utilizes the LLM (llama 2) model and a RAG technique to enhance LLM's knowledge with additional data.  
+   - You can switch to LLM answering mode using a toggle button in the top right corner.  
+   - Due to limited data, the model currently answers only specific fields available in the data (current data pertains to Python bugs).  
+<img src="./Image/LLM1.png" style="width:400px;"/>
+
+   - However, you can use the ANN answering mode for clearer responses.  
+      For example: What can you do?, Who are you?, ...  
+   - Particularly, it can answer medical questions  
+    For example: What to do if my muscle is pulled?, Which medicine to take if I get bleeding?, ...  
+   - Due to the limited training data of the model, the data will be updated to cover more fields and areas in the future.
+   - You can use all functionalities of the application in ANN mode.  
+
+<img src="./Image/Chat.png" style="width:400px;"/>
+
+
+## Voice control (Speech to text)
 
    - You can say 'hello' to switch the bot to listening mode, and then ask whatever you like.  
 
@@ -20,7 +37,7 @@
 <img src="./Image/normal.png" style="width:400px;"/> <img src="./Image/say%20hello.png" style="width:400px;"/>
 
 
-## 2. Movie recommendations
+## Movie recommendations
 
    - Movie recommendations is a function that suggests based on user requests.  
    - The movie recommendation model is built using linear_kernel in the scikit-learn library, suggesting by calculating similarity between feature vectors of movies provided by the user, or suggesting based on genres and returning the top 10 highest-rated movies.  
@@ -29,7 +46,7 @@
 
 <img src="./Image/MR_2.png" style="width:400px;"/>
 
-## 3. Age prediction
+## Age prediction
    - Age prediction is a feature that predicts based on user's voice input.  
    - The age prediction model uses a Convolutional Neural Network model built using the TensorFlow library. The model makes predictions by processing the input audio and returns results based on its trained parameters.  
 
@@ -37,44 +54,34 @@
 
 <img src="./Image/AP_2.png" style="width:400px;"/>
 
-## 4. Respond with voice (text to speech)
+## Respond with voice (text to speech)
 
    - The bot will speak the answer aloud. (This function only works when you use voice commands).  
 
-## 5. Open and close application
+## Open and close application
 
    - It is a feature to open and close applications based on their names.  
    - The function is built using the psutil library and subprocess to find and terminate processes of applications, or automatically open applications using PowerShell.  
 
 <img src="./Image/OP.png" style="width:400px;"/><img src="./Image/CL.png" style="width:400px;"/>
 
-## 6. Google custom search
+## Google custom search
 
    - It is a search feature based on Google's custom search API.  
    - It uses the results obtained through the BeautifulSoup library to parse the HTML and XML syntax of documents, and then returns the results to the user.  
 
 <img src="./Image/Searching.png" style="width:400px;"/>
 
-## 7. Chat bot
+## Some commands
 
-   - Additionally, as a chat bot, the program can address your questions  
-      For example: What can you do?, Who are you?, ...  
-   - Particularly, it can answer medical questions  
-    For example: What to do if my muscle is pulled?, Which medicine to take if I get bleeding?, ...  
-   - Due to the limited training data of the model, the data will be updated to cover more fields and areas in the future.
-
-<img src="./Image/Chat.png" style="width:400px;"/>
-
-## 8. Some commands
-
-#### 8.1 Google search
+#### Google search
 
    - To search Google and return results, you can use the chatbox or voice with the phrase 'google search' at the beginning.  
       For example: google search what is python, google search GDP of Viet Nam, ...  
 
 <img src="./Image/Searching.png" style="width:400px;"/>
 
-#### 8.2 Movie recommendations
+#### Movie recommendations
 
    - To have the bot suggest movies, you need to command the bot to recommend movies for you.  
       For example: Suggest me some movies, Could you recommend a few good movies, ...  
@@ -86,7 +93,7 @@
 
 <img src="./Image/MR_2.png" style="width:400px;"/><img src="./Image/MR_3.png" style="width:400px;"/>
 
-#### 8.3 Age prediction
+#### Age prediction
 
    - To predict your age, you need to command the bot to predict your age.  
       For example: predict my age, Can you guess my age ?, ...  
@@ -97,7 +104,7 @@
 
 <img src="./Image/AP_2.png" style="width:400px;"/>
 
-#### 8.4 Open or Close application 
+#### Open or Close application 
 
    - To open or close an app, you need to type or say 'open' or 'close' followed by the name of the app you want to open or close.  
       For example: open UniKey, open Google Chrome, close Notepad, close Edge, ...  
@@ -106,17 +113,18 @@
 
 ## **Usage**
 
-#### 1. Download file
-   - Due to LFS limitations, this project cannot currently be cloned from git, but you can download the project [here](https://drive.google.com/file/d/1Dge_4dlQVLHNX4TUFIqyBB4oZlAbCFUx/view?usp=sharing) and follow the steps below to run it.  
+#### Download file
+   - First, to use it, you need to use the command "Git clone https://github.com/tranducthuan220401/AI_Assistant.git".  
+   - Then you need to download the models from this drive [here](https://programmablesearchengine.google.com/controlpanel/all).
 
-#### 2. Get API
+#### Get API
 
-   - First, you need to obtain an API key from Google to use the custom search feature. You can find the API key [here](https://programmablesearchengine.google.com/controlpanel/all) and the Custom Search Engine ID [here](https://programmablesearchengine.google.com/controlpanel/all) then save them into two corresponding files named API_Key.txt and S_id.txt.
+   - After that, you need to obtain an API key from Google to use the custom search feature. You can find the API key [here](https://programmablesearchengine.google.com/controlpanel/all) and the Custom Search Engine ID [here](https://programmablesearchengine.google.com/controlpanel/all) then save them into two corresponding files named API_Key.txt and S_id.txt.
 
-#### 3. Extract file
+#### Extract file
 
-   - Next, you need to unzip the files MoviesRecommendation.zip and AgePrediction.zip to use the Movies Recommendation and Age Prediction features.
+   - After that, simply unzip the models.zip file at the root of the folder.  
 
 #### 4. Install the requirements.txt file.
 
-   - You can use the command 'pip install -r requirements.txt'.
+   - Finally, you need to install the necessary libraries using the command 'pip install -r requirements.txt'.
