@@ -1,11 +1,9 @@
 transformers
 langchain
 langchain-community
+
 torch
-pypdf
 sentence-transformers
-gpt4all
-faiss-cpu
 openai
 requests
 pyttsx3
@@ -17,4 +15,11 @@ pyaudio
 psutil
 bs4
 pandas
-ctransformers[cuda]
+
+ctransformers
+
+pypdf
+fastembed
+
+flashrank
+rapidocr-onnxruntime
