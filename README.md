@@ -16,6 +16,7 @@
    - The application utilizes the LLM (llama 2) model and a RAG technique to enhance LLM's knowledge with additional data.  
    - You can switch to LLM answering mode using a toggle button in the top right corner.  
    - Due to limited data, the model currently answers only specific fields available in the data (current data pertains to Python bugs).  
+     
 <img src="./Image/LLM1.png" style="width:400px;"/> <img src="./Image/LLM2.png" style="width:420px;"/>
 
    - However, you can use the ANN answering mode for clearer responses.  
@@ -23,7 +24,6 @@
    - Particularly, it can answer medical questions  
     For example: What to do if my muscle is pulled?, Which medicine to take if I get bleeding?, ...  
    - Due to the limited training data of the model, the data will be updated to cover more fields and areas in the future.
-   - You can use all functionalities of the application in ANN mode.  
 
 <img src="./Image/Chat.png" style="width:400px;"/>
 
