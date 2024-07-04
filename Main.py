@@ -106,10 +106,12 @@ class AIAssistantApp:
         if self.Amode:
             self.toggle_button.config(image = self.off)
             self.Amode = False
+            self.Qtag = ""
             print("mode = ANN")
         else:
             self.toggle_button.config(image = self.on)
             self.Amode = True
+            self.Qtag = ""
             print("mode = LLM")
     
     def record_audio(self):
@@ -141,8 +143,8 @@ class AIAssistantApp:
 
     def handle_input(self, event=None):
         input_text = self.entry.get()
-        self.show_text_and_respond(input_text, self.Qtag)
         self.entry.delete(0, tk.END)
+        self.show_text_and_respond(input_text, self.Qtag)
         self.send_button.config(state=tk.DISABLED)
 
     def check_send_button_state(self):
@@ -153,52 +155,41 @@ class AIAssistantApp:
             self.send_button.config(state=tk.DISABLED)
 
     def show_text_and_respond(self, input_text, Qtag, stage = 1):
-        if self.Amode:
-            res = llm.get_response(input_text)
-            self.add_text("Bot: " + res, "bot")
-        else:
-            self.add_text(input_text, "you")
-            input_text = input_text.lower()
-            key , command = self.check_starting_keyword(input_text)
-            if Qtag == "Movie":
-                rec = mr.get_recommendations(input_text)
-                if rec.empty:
-                    self.add_text("Bot: Sorry, the movie name (year of production) or genres you provided are not in my data", "bot")
-                else:
-                    movies_list = rec.apply(lambda row: f"{row['title']} - {row['genres']} - {round(row['rating'], 1)}", axis=1).tolist()
-                    for movie in movies_list:
-                        self.add_text(movie, "bot")
-                self.Qtag=""
-                return
+        self.add_text(input_text, "you")
+        input_text = input_text.lower()
+        key , command = self.check_starting_keyword(input_text)
+        if Qtag == "Movie":
+            rec = mr.get_recommendations(input_text)
+            if rec.empty:
+                self.add_text("Bot: Sorry, the movie name (year of production) or genres you provided are not in my data", "bot")
             else:
-                if key == None:
-                    res, self.Qtag = ca.chatbot_response(input_text)
-                    if res == "none":
-                        for i, item in enumerate(ca.google_search(input_text)):
-                            self.add_text("Bot: sorry, i didn't know this but i found some links to help you", "bot")
-                            self.add_text(f"link {i + 1}: {item['link']}", "bot")
-                    else:
-                        self.add_text("Bot: " + res, "bot")
-                    if stage == 0:
-                        ca.speech(res)
-                    else:
-                        pass
+                movies_list = rec.apply(lambda row: f"{row['title']} - {row['genres']} - {round(row['rating'], 1)}", axis=1).tolist()
+                for movie in movies_list:
+                    self.add_text(movie, "bot")
+            self.Qtag=""
+            return
+        else:
+            if key == None:
+                self.add_text("Bot: I'm thinking, please bear with me and wait a moment...", "bot")
+                self.entry.config(state=tk.DISABLED)
+                self.send_button.config(state=tk.DISABLED)
+                threading.Thread(target=self.get_chatbot_response, args=(input_text, stage,)).start()
 
-            if key == "google search":
-                search_results = ca.get_google_search(command)
-                link, res = ca.try_get_content(search_results)
-                self.add_text("Bot: " + link, "bot")
-                self.add_text("Bot: " + res, "bot")
-                if stage == 0:
-                    ca.speech(res)
-                else:
-                    pass
+        if key == "google search":
+            search_results = ca.get_google_search(command)
+            link, res = ca.try_get_content(search_results)
+            self.add_text("Bot: " + link, "bot")
+            self.add_text("Bot: " + res, "bot")
+            if stage == 0:
+                ca.speech(res)
+            else:
+                pass
 
-            if key == "open":
-                self.open_app(command)
+        if key == "open":
+            self.open_app(command)
 
-            if key == "close":
-                self.close_app(command)
+        if key == "close":
+            self.close_app(command)
 
     def check_starting_keyword(self, input_text):
         keywords = ["google search", "open", "close"]
@@ -210,6 +201,33 @@ class AIAssistantApp:
                 return keyword, rest
     
         return None, None
+    
+    def get_chatbot_response(self, input_text, stage):
+        if self.Amode:
+            res = llm.get_response(input_text)
+            self.chat_log.delete("end-2l", "end-1l")
+            self.add_text("Bot: " + res, "bot")
+            self.entry.config(state=tk.NORMAL)
+            self.send_button.config(state=tk.NORMAL)
+            if stage == 0:
+                ca.speech(res)
+
+        else:
+            res, self.Qtag = ca.chatbot_response(input_text)
+            if res == "none":
+                for i, item in enumerate(ca.google_search(input_text)):
+                    self.chat_log.delete("end-2l", "end-1l")
+                    self.add_text("Bot: sorry, i didn't know this but i found some links to help you", "bot")
+                    self.add_text(f"link {i + 1}: {item['link']}", "bot")
+                    self.entry.config(state=tk.NORMAL)
+                    self.send_button.config(state=tk.NORMAL)
+            else:
+                self.chat_log.delete("end-2l", "end-1l")
+                self.add_text("Bot: " + res, "bot")
+                self.entry.config(state=tk.NORMAL)
+                self.send_button.config(state=tk.NORMAL)
+            if stage == 0:
+                ca.speech(res)
     
     def open_app(self, app_name):
         try:

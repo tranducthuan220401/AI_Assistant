@@ -1,4 +1,3 @@
-from langchain_community.llms.ctransformers import CTransformers
 from langchain.chains.retrieval_qa.base import RetrievalQA
 from langchain.prompts import PromptTemplate
 from langchain_core.callbacks import CallbackManager, StreamingStdOutCallbackHandler
@@ -8,7 +7,7 @@ from langchain_community.llms import LlamaCpp
 
 callback_manager = CallbackManager([StreamingStdOutCallbackHandler()])
 
-model_dir = "models/vinallama-7b-chat_q5_0.gguf"
+model_dir = "models/llama-7b-chat_q5_0.gguf"
 
 embedding_model = FastEmbedEmbeddings(model_name="BAAI/bge-base-en-v1.5")
 
@@ -19,13 +18,6 @@ n_gpu_layers = -1
 n_batch = 512
 
 def load_llm(model_file):
-    # llm = CTransformers(
-    #     model=model_file,
-    #     model_type="llama",
-    #     config={'max_new_tokens': 600,
-    #             'temperature': 0.01,
-    #             'context_length': 1024}
-    # )
     llm = LlamaCpp(
     model_path=model_file,
     n_gpu_layers=n_gpu_layers,
@@ -83,13 +75,8 @@ prompt = creat_prompt(template)
 
 llm_chain  = create_qa_chain(prompt, llm, db)
 
-question = "BugsInPy currently has"
-
-response = llm_chain.invoke({"query": question})
-print(response)
-
 def get_response(query):
-    response = llm_chain.invoke(query)
+    response = llm_chain.invoke({"query": query})
     
     return response['result']
 

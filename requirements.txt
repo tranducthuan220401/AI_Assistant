@@ -16,7 +16,7 @@ psutil
 bs4
 pandas
 
-ctransformers
+llama-cpp-python
 
 pypdf
 fastembed
