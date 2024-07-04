@@ -125,6 +125,6 @@
 
    - After that, simply unzip the models.zip file at the root of the folder.  
 
-#### 4. Install the requirements.txt file.
+#### Install the requirements.txt file.
 
    - Finally, you need to install the necessary libraries using the command 'pip install -r requirements.txt'.
