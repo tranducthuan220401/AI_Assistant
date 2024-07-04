@@ -16,7 +16,7 @@
    - The application utilizes the LLM (llama 2) model and a RAG technique to enhance LLM's knowledge with additional data.  
    - You can switch to LLM answering mode using a toggle button in the top right corner.  
    - Due to limited data, the model currently answers only specific fields available in the data (current data pertains to Python bugs).  
-<img src="./Image/LLM1.png" style="width:400px;"/>
+<img src="./Image/LLM1.png" style="width:400px;"/> <img src="./Image/LLM2.png" style="width:400px;"/>
 
    - However, you can use the ANN answering mode for clearer responses.  
       For example: What can you do?, Who are you?, ...  
@@ -115,7 +115,7 @@
 
 #### Download file
    - First, to use it, you need to use the command 'Git clone https://github.com/tranducthuan220401/AI_Assistant.git'.  
-   - Then you need to download the models from this drive [here](https://drive.google.com/file/d/1FwZwYq-6s6R0YLZB2omL4drgR3kxtPXh/view?usp=sharing).
+   - Then you need to download the models from this drive [here](https://drive.google.com/file/d/1mxCZcKTv6csYsmyOSww3AGrN8B6SjFXd/view?usp=sharing).
 
 #### Get API
 
