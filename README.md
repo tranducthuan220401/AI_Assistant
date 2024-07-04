@@ -16,7 +16,7 @@
    - The application utilizes the LLM (llama 2) model and a RAG technique to enhance LLM's knowledge with additional data.  
    - You can switch to LLM answering mode using a toggle button in the top right corner.  
    - Due to limited data, the model currently answers only specific fields available in the data (current data pertains to Python bugs).  
-<img src="./Image/LLM1.png" style="width:400px;"/> <img src="./Image/LLM2.png" style="width:400px;"/>
+<img src="./Image/LLM1.png" style="width:400px;"/> <img src="./Image/LLM2.png" style="width:420px;"/>
 
    - However, you can use the ANN answering mode for clearer responses.  
       For example: What can you do?, Who are you?, ...  
