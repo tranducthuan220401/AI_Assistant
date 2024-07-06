@@ -56,7 +56,7 @@
 
 ## Respond with voice (text to speech)
 
-   - The bot will speak the answer aloud. (This function only works when you use voice commands).  
+   - Bot will read out the answer using text-to-speech. (This function only works when you use voice commands)  
 
 ## Open and close application
 
