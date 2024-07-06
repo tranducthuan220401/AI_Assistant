@@ -114,8 +114,8 @@
 ## **Usage**
 
 #### Download file
-   - First, to use it, you need to use the command
-   - Git clone https://github.com/tranducthuan220401/AI_Assistant.git
+   - First, to use it, you need to use the command  
+   ``` Git clone https://github.com/tranducthuan220401/AI_Assistant.git ```  
    - Then you need to download the models from this drive [here](https://drive.google.com/file/d/1mxCZcKTv6csYsmyOSww3AGrN8B6SjFXd/view?usp=sharing).
 
 #### Get API
