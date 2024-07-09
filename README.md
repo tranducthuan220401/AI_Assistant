@@ -10,13 +10,16 @@
 <img src="./Image/Chat.png" style="width:400px;"/>
 
 ## **App features**
-## Table of Contents
+## Table of features
 
 - [Chat bot](#Chat-bot)
-- [Voice control](#Voicecontrol(Speechtotext))
-- [Installation](#installation)
-- [Usage](#usage)
-- [Other](#other)
+- [Voice control](#Voice-control-(Speech-to-text))
+- [Movie recommendations](#Movie-recommendations)
+- [Age prediction](#Age-prediction)
+- [Respond with voice](#Respond-with-voice-(text-to-speech))  
+- [Open and close application](#Open-and-close-application)
+- [Google custom search](#Google-custom-search)
+- [Some commands](#Some-commands)
 
 ## Chat bot
 
