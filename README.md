@@ -10,6 +10,13 @@
 <img src="./Image/Chat.png" style="width:400px;"/>
 
 ## **App features**
+## Table of Contents
+
+- [Chat bot](#Chatbot)
+- [Voice control](#Voicecontrol(Speechtotext))
+- [Installation](#installation)
+- [Usage](#usage)
+- [Other](#other)
 
 ## Chat bot
 
