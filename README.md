@@ -12,7 +12,7 @@
 ## **App features**
 ## Table of Contents
 
-- [Chat bot](#Chatbot)
+- [Chat bot](#Chat#bot)
 - [Voice control](#Voicecontrol(Speechtotext))
 - [Installation](#installation)
 - [Usage](#usage)
