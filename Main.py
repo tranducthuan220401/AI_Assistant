@@ -1,4 +1,5 @@
 import tkinter as tk
+from tkinter import filedialog, messagebox
 from PIL import Image, ImageTk
 import threading
 import pyaudio
@@ -12,6 +13,7 @@ sys.path.append('Fine_turning_LLM')
 import Fine_turning_LLM as llm
 import psutil
 import subprocess
+import RemoveBackground as rb
 
 
 class AIAssistantApp:
@@ -55,7 +57,10 @@ class AIAssistantApp:
 
         self.toggle_state.trace_add("write", self.handle_toggle)
 
-        self.clear_button = tk.Button(self.root, text="Clear chat box", command=self.clear_chat_history, bg="blue")
+        self.upload_button = tk.Button(self.root, text="Remove Background image", command=self.upload_image, bg="green")
+        self.upload_button.pack(pady=(5, 5))
+
+        self.clear_button = tk.Button(self.root, text="Clear chat box", command=self.clear_chat_history, bg="green")
         self.clear_button.pack(pady=(5, 5))
 
         self.chat_frame = tk.Frame(self.root)
@@ -100,18 +105,66 @@ class AIAssistantApp:
         self.root.mainloop()
 
     def clear_chat_history(self):
-        self.chat_log.delete('1.0', tk.END)
+        if messagebox.askyesno("Confirm", "Are you sure you want to clear the chat history?"):
+            self.chat_log.config(state=tk.NORMAL)
+            self.chat_log.delete('1.0', tk.END)
+            self.chat_log.config(state=tk.DISABLED)
+
+    def upload_image(self):
+        file_path = filedialog.askopenfilename(filetypes=[("Image files", "*.png;*.jpg;*.jpeg")])
+        if file_path:
+            try:
+                self.upload_image = Image.open(file_path)
+                nobg_image = rb.generate_image(self.upload_image)
+                self.show_image(nobg_image)
+            except Exception as e:
+                messagebox.showerror("Error", f"Unable to open image file: {e}")
+
+    # def show_image(self, image):
+    #     image = image.resize((200, 200), Image.LANCZOS)
+    #     upload_img = ImageTk.PhotoImage(image)
+    #     self.chat_log.image_create(tk.END, image=upload_img)
+    #     self.chat_log.insert(tk.END, "\n")
+
+    def show_image(self, image):
+        frame = tk.Frame(self.chat_log)
+        frame.pack(pady=5, fill=tk.X)
+
+        image = image.resize((200, 200), Image.LANCZOS)
+        upload_img = ImageTk.PhotoImage(image)
+        
+        label = tk.Label(frame, image=upload_img)
+        label.image = upload_img
+        label.pack(side=tk.LEFT, padx=5)
+
+        save_button = tk.Button(frame, text="Save Image", command=lambda: self.save_image(image))
+        save_button.pack(side=tk.RIGHT, padx=10)
+
+        self.chat_log.window_create(tk.END, window=frame)
+        self.chat_log.insert(tk.END, "\n")
+
+
+    def save_image(self, image):
+        file_path = filedialog.asksaveasfilename(defaultextension=".png", filetypes=[("PNG files", "*.png")])
+        if file_path:
+            try:
+                image.save(file_path)
+                messagebox.showinfo("Success", "Image saved successfully!")
+            except Exception as e:
+                messagebox.showerror("Error", f"Unable to save image file: {e}")
 
     def handle_toggle(self):
         if self.Amode:
             self.toggle_button.config(image = self.off)
             self.Amode = False
             self.Qtag = ""
+            print("Qtag = None")
             print("mode = ANN")
         else:
             self.toggle_button.config(image = self.on)
             self.Amode = True
             self.Qtag = ""
+            print("Qtag = None")
             print("mode = LLM")
     
     def record_audio(self):
@@ -167,6 +220,7 @@ class AIAssistantApp:
                 for movie in movies_list:
                     self.add_text(movie, "bot")
             self.Qtag=""
+            print(self.Qtag)
             return
         else:
             if key == None:
@@ -178,8 +232,8 @@ class AIAssistantApp:
         if key == "google search":
             search_results = ca.get_google_search(command)
             link, res = ca.try_get_content(search_results)
-            self.add_text("Bot: " + link, "bot")
-            self.add_text("Bot: " + res, "bot")
+            self.add_text(f"Bot: {link}", "bot")
+            self.add_text(f"Bot: {res}", "bot")
             if stage == 0:
                 ca.speech(res)
             else:
@@ -206,7 +260,7 @@ class AIAssistantApp:
         if self.Amode:
             res = llm.get_response(input_text)
             self.chat_log.delete("end-2l", "end-1l")
-            self.add_text("Bot: " + res, "bot")
+            self.add_text(f"Bot: {res}", "bot")
             self.entry.config(state=tk.NORMAL)
             self.send_button.config(state=tk.NORMAL)
             if stage == 0:
@@ -214,16 +268,19 @@ class AIAssistantApp:
 
         else:
             res, self.Qtag = ca.chatbot_response(input_text)
+            print(self.Qtag)
             if res == "none":
-                for i, item in enumerate(ca.google_search(input_text)):
-                    self.chat_log.delete("end-2l", "end-1l")
-                    self.add_text("Bot: sorry, i didn't know this but i found some links to help you", "bot")
-                    self.add_text(f"link {i + 1}: {item['link']}", "bot")
-                    self.entry.config(state=tk.NORMAL)
-                    self.send_button.config(state=tk.NORMAL)
+                search_results = ca.get_google_search(input_text)
+                link, res = ca.try_get_content(search_results)
+                self.chat_log.delete("end-2l", "end-1l")
+                self.add_text("Bot: sorry, i didn't know this but i found some links to help you", "bot")
+                self.add_text(f"Bot: {link}", "bot")
+                self.add_text(f"Bot: {res}", "bot")
+                self.entry.config(state=tk.NORMAL)
+                self.send_button.config(state=tk.NORMAL)
             else:
                 self.chat_log.delete("end-2l", "end-1l")
-                self.add_text("Bot: " + res, "bot")
+                self.add_text(f"Bot: {res}", "bot")
                 self.entry.config(state=tk.NORMAL)
                 self.send_button.config(state=tk.NORMAL)
             if stage == 0:
@@ -266,6 +323,7 @@ class AIAssistantApp:
                 self.add_text(f"I guess your age is: {age} years old - accuracy: {accuracy}%", "bot")
                 ca.speech(f"I guess your age is: {age} years old - accuracy: {accuracy}%")
                 self.Qtag=""
+                print("Qtag = None")
             else:
                 try:
                     self.label.config(text="--You can say hello to wake up the Bot and it will listen from your microphone--")
@@ -274,7 +332,7 @@ class AIAssistantApp:
                     audio_data = self.record_audio()
                     text = self.transcribe_audio(audio_data)
                     # print("Văn bản được nhận diện:", text)
-                    print(self.Qtag)
+                    # print(self.Qtag)
                     # self.add_text("You: " + text, "you")
                     if "hello" in text.lower():
                         self.recording = False

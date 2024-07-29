@@ -1,20 +1,23 @@
 import requests
-# import tensorflow as tf
 import pyttsx3
 import numpy as np
 import random
 import nltk
-# import json
+# from nltk.corpus import wordnet
 from bs4 import BeautifulSoup
 from nltk import sent_tokenize
 import re
 from os.path import join, dirname, abspath
 import pickle
-nltk.download('punkt')
-nltk.download('omw-1.4')
-nltk.download('wordnet')
 from nltk.stem import WordNetLemmatizer
 from keras.models import load_model
+
+# nltk_data_dir = 'nltk_data'
+# nltk.data.path.append(nltk_data_dir)
+
+# nltk.download('punkt', download_dir=nltk_data_dir)
+# nltk.download('omw-1.4', download_dir=nltk_data_dir)
+# nltk.download('wordnet', download_dir=nltk_data_dir)
 
 lemmatizer = WordNetLemmatizer()
 

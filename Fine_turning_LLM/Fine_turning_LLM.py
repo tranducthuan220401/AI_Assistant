@@ -24,7 +24,7 @@ def load_llm(model_file):
     n_batch=n_batch,
     callback_manager=callback_manager,
     verbose=True,
-    max_tokens=2000,
+    max_tokens=1024,
     temperature=0.01,
     n_ctx=1024,
     )
