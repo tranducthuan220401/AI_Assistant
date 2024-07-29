@@ -13,6 +13,7 @@
 ## Table of features
 
 - [Chat bot](#Chat-bot)
+- [Remove background from image](#Remove-background-from-image)
 - [Voice control](#Voice-control-(Speech-to-text))
 - [Movie recommendations](#Movie-recommendations)
 - [Age prediction](#Age-prediction)
@@ -37,7 +38,7 @@
 
 <img src="./Image/Chat.png" style="width:400px;"/>
 
-## Remove the background from image
+## Remove background from image
 
    - You can upload an image, and the application will use a Generator model trained by a GAN network to remove the background from the image. You can then save it using the Save Image button.  
      
