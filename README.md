@@ -10,20 +10,30 @@
 <img src="./Image/Chat.png" style="width:400px;"/>
 
 ## **App features**
+## Table of features
+
+- [Chat bot](#Chat-bot)
+- [Voice control](#Voice-control-(Speech-to-text))
+- [Movie recommendations](#Movie-recommendations)
+- [Age prediction](#Age-prediction)
+- [Respond with voice](#Respond-with-voice-(text-to-speech))  
+- [Open and close application](#Open-and-close-application)
+- [Google custom search](#Google-custom-search)
+- [Some commands](#Some-commands)
 
 ## Chat bot
 
    - The application utilizes the LLM (llama 2) model and a RAG technique to enhance LLM's knowledge with additional data.  
    - You can switch to LLM answering mode using a toggle button in the top right corner.  
    - Due to limited data, the model currently answers only specific fields available in the data (current data pertains to Python bugs).  
-<img src="./Image/LLM1.png" style="width:400px;"/>
+     
+<img src="./Image/LLM1.png" style="width:400px;"/> <img src="./Image/LLM2.png" style="width:420px;"/>
 
    - However, you can use the ANN answering mode for clearer responses.  
       For example: What can you do?, Who are you?, ...  
    - Particularly, it can answer medical questions  
     For example: What to do if my muscle is pulled?, Which medicine to take if I get bleeding?, ...  
    - Due to the limited training data of the model, the data will be updated to cover more fields and areas in the future.
-   - You can use all functionalities of the application in ANN mode.  
 
 <img src="./Image/Chat.png" style="width:400px;"/>
 
@@ -56,7 +66,7 @@
 
 ## Respond with voice (text to speech)
 
-   - The bot will speak the answer aloud. (This function only works when you use voice commands).  
+   - Bot will read out the answer using text-to-speech. (This function only works when you use voice commands)  
 
 ## Open and close application
 
@@ -114,8 +124,8 @@
 ## **Usage**
 
 #### Download file
-   - First, to use it, you need to use the command 'Git clone https://github.com/tranducthuan220401/AI_Assistant.git'.  
-   - Then you need to download the models from this drive [here](https://drive.google.com/file/d/1FwZwYq-6s6R0YLZB2omL4drgR3kxtPXh/view?usp=sharing).
+   - First, to use it, you need to use the command ``` Git clone https://github.com/tranducthuan220401/AI_Assistant.git ```  
+   - Then you need to download the models from this drive [here](https://drive.google.com/file/d/1mxCZcKTv6csYsmyOSww3AGrN8B6SjFXd/view?usp=sharing).
 
 #### Get API
 
@@ -127,4 +137,4 @@
 
 #### Install the requirements.txt file.
 
-   - Finally, you need to install the necessary libraries using the command 'pip install -r requirements.txt'.
+   - Finally, you need to install the necessary libraries using the command ``` pip install -r requirements.txt ```  
