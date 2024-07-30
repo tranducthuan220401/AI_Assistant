@@ -42,7 +42,7 @@
 
    - You can upload an image, and the application will use a Generator model trained by a GAN network to remove the background from the image. You can then save it using the Save Image button.  
      
-<img src="./Image/RB1.png" style="width:400px;"/> <img src="./Image/RB2.png" style="width:420px;"/>
+<img src="./Image/RB1.png" style="width:400px;"/> <img src="./Image/RB2.png" style="width:400px;"/>
 
 ## Voice control (Speech to text)
 
