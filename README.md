@@ -7,7 +7,9 @@
    - The supported languages are English ( Vietnamese with be update soon :3).  
    - Since this is a personal project, many other interesting features will be updated in the future. Thank you for following the project.
 
-![Video Title](./Image/ChatDemo.gif)
+![Video Title](./Image/ChatDemo.gif)  
+<img src="./Image/ChatDemo.gif" style="width:400px;"/>
+
 
 ## **App features**
 ## Table of features
