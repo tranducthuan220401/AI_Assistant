@@ -13,15 +13,15 @@
 ## **App features**
 ## Table of features
 
-✅[Chat bot](#Chat-bot)  
-✅[Remove background from image](#Remove-background-from-image)  
-✅[Voice control](#Voice-control-(Speech-to-text))  
-✅[Movie recommendations](#Movie-recommendations)  
-✅[Age prediction](#Age-prediction)  
-✅[Respond with voice](#Respond-with-voice-(text-to-speech))  
-✅[Open and close application](#Open-and-close-application)  
-✅[Google custom search](#Google-custom-search)  
-✅[Some commands](#Some-commands)  
+✅ [Chat bot](#Chat-bot)  
+✅ [Remove background from image](#Remove-background-from-image)  
+✅ [Voice control](#Voice-control-(Speech-to-text))  
+✅ [Movie recommendations](#Movie-recommendations)  
+✅ [Age prediction](#Age-prediction)  
+✅ [Respond with voice](#Respond-with-voice-(text-to-speech))  
+✅ [Open and close application](#Open-and-close-application)  
+✅ [Google custom search](#Google-custom-search)  
+✅ [Some commands](#Some-commands)  
 
 ## Chat bot
 
