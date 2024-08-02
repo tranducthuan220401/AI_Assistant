@@ -106,9 +106,7 @@ class AIAssistantApp:
 
     def clear_chat_history(self):
         if messagebox.askyesno("Confirm", "Are you sure you want to clear the chat history?"):
-            self.chat_log.config(state=tk.NORMAL)
             self.chat_log.delete('1.0', tk.END)
-            self.chat_log.config(state=tk.DISABLED)
 
     def upload_image(self):
         file_path = filedialog.askopenfilename(filetypes=[("Image files", "*.png;*.jpg;*.jpeg")])
@@ -119,12 +117,6 @@ class AIAssistantApp:
                 self.show_image(nobg_image)
             except Exception as e:
                 messagebox.showerror("Error", f"Unable to open image file: {e}")
-
-    # def show_image(self, image):
-    #     image = image.resize((200, 200), Image.LANCZOS)
-    #     upload_img = ImageTk.PhotoImage(image)
-    #     self.chat_log.image_create(tk.END, image=upload_img)
-    #     self.chat_log.insert(tk.END, "\n")
 
     def show_image(self, image):
         frame = tk.Frame(self.chat_log)
