@@ -61,7 +61,7 @@ Refer to model building techniques here [Remove_background_with_GAN_network](htt
    - Movie recommendations is a function that suggests based on user requests.  
    - The movie recommendation model is built using linear_kernel in the scikit-learn library, suggesting by calculating similarity between feature vectors of movies provided by the user, or suggesting based on genres and returning the top 10 highest-rated movies.  
   
-   Refer to model building techniques here [Movie recommendation model](https://github.com/tranducthuan220401/MoviesRecommendation)
+   Refer to model building techniques here [Movie recommendation](https://github.com/tranducthuan220401/MoviesRecommendation)
 
 <img src="./Image/MR_2.png" style="width:400px;"/>
 
@@ -69,7 +69,7 @@ Refer to model building techniques here [Remove_background_with_GAN_network](htt
    - Age prediction is a feature that predicts based on user's voice input.  
    - The age prediction model uses a Convolutional Neural Network model built using the TensorFlow library. The model makes predictions by processing the input audio and returns results based on its trained parameters.  
 
-   Refer to model building techniques here [Age prediction model](https://github.com/tranducthuan220401/Age_Prediction)
+   Refer to model building techniques here [Age prediction](https://github.com/tranducthuan220401/Age_Prediction)
 
 <img src="./Image/AP_2.png" style="width:400px;"/>
 
