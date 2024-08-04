@@ -9,7 +9,6 @@
 
 <img src="./Image/ChatDemo.gif" style="width:400px;"/>
 
-
 ## **App features**
 ## Table of features
 
